@@ -1,47 +1,68 @@
-/* */
+/* Grundläggande stilinställningar för hela webbplatsen */
 * { box-sizing: border-box; }
 
 body {
-  font-family: Arial, Helvetica, sans-serif; /* text font-family */
-  font-size: 16px;                             /* text font-size */
-  line-height: 1.5;                            /* text line-height */
+  font-family: Arial, Helvetica, sans-serif; 
+  font-size: 16px;                             
+  line-height: 1.5;                            
   color: #222;
   background: #fafafa;
+  background-size: cover;
+  background-position: center;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Header with background image (replace images/bg-header.jpg) */
+/* Header med bakgrundsbild */
 #site-header {
   background-color: #0b6e99; /* background color */
-  background-image: url('../images/bg-header.jpg');
+  background-image: url('../MEDIA/Forest.jpg');
   background-size: cover;
   background-position: center;
   color: white;
   padding: 1rem 0;
 }
 
-header h1 { margin: 0 1rem; }
+/* Kombinerade selektorer */
+header h1 { 
+  font-size: 1.5rem; 
+}
+main ul { 
+  margin-left: 1.25rem; 
+}
 
-/* Navigation */
-.main-nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 0.5rem; }
-.main-nav li { }
+header h1 { 
+  margin: 0 1rem; 
+}
+
+/* Navigationsmeny */
+.main-nav ul { 
+  list-style: none; 
+  margin: 0; 
+  padding: 0; 
+  display: flex; 
+  gap: 0.5rem; 
+}
 .main-nav a.nav-link {
   display: inline-block;
   padding: 0.5rem 0.75rem;
-  color: white;
+  color: rgb(251, 249, 249);
   text-decoration: none;
   border-radius: 4px;
 }
 
-/* Hover state for navigation links */
+/* Musspekare beteende vid navigationslänkar */
 .main-nav a.nav-link:hover {
   background: rgba(255,255,255,0.15);
 }
 
-/* Current page marker (class in HTML) */
+/* Befintlig sida markering */
 .main-nav a.current {
   background: rgba(0,0,0,0.2);
+  background: linear-gradient(to right, #c7bd05, #943607);
   font-weight: bold;
 }
 
@@ -52,15 +73,42 @@ header h1 { margin: 0 1rem; }
   padding: 0 1rem;
 }
 
-/* Ensure images are responsive */
-.responsive { max-width: 100%; height: auto; display: block; margin: 0.75rem 0; }
+main#content {
+  flex: 1;
+}
 
-/* Style links inside main differently from nav links */
-main a { color: #0b6e99; text-decoration: underline; }
-main a:hover { color: #064a66; }
+/* Tar bort synliga kanter på bilder */
+img {
+  border: 0;
+  outline: none;
+  box-shadow: none;
+  background: transparent;
 
-/* Checklist list-style changed */
-.checklist { list-style: square inside; }
+}/* Denna metod tar bort synliga kanter på bilder så att de smälter in i sidan */
+#node-img, #vite-img {
+  mix-blend-mode: multiply;
+}
+
+/* Säkerställ att bilder är responsiva */
+.responsive { 
+  max-width: 100%; 
+  height: auto; 
+  display: block; 
+  margin: 0.75rem 0; }
+
+/* Länkar inuti main skiljer sig från navigationslänkar */
+main a { 
+  color: #76990b; 
+  text-decoration: underline;
+}
+main a:hover { 
+  color: #064a66; 
+}
+
+/* Styling för checklistan med kvadratiska punkter */
+.checklist { 
+  list-style: square inside; 
+}
 
 /* Footer */
 #site-footer {
@@ -68,13 +116,11 @@ main a:hover { color: #064a66; }
   color: #eee;
   padding: 1rem 0;
   text-align: center;
+  background-image: url('../MEDIA/Library.jpg');
 }
 
-/* Combined sele*/
-header h1 { font-size: 1.5rem; }
-main ul { margin-left: 1.25rem; }
 
-/* Small screens: layout adjustments to avoid horizontal scrolling */
+/* Små skärmar: layoutjusteringar för att undvika horisontell scrollning, enligt beskrivning i uppgiften */
 @media (max-width: 500px) {
   .main-nav ul { flex-direction: column; gap: 0.25rem; }
   header h1 { font-size: 1.25rem; padding-left: 0.5rem; }
